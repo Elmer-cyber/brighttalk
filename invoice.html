@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrightTALK ESL Classes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link to the separate additional CSS -->
+    <link rel="stylesheet" href="additional-styles.css" />
+    <!-- PayPal SDK Script -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <h1>BrightTALK</h1>
+        <nav>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>Generate Your Invoice</h2>
+        <form id="invoice-form">
+          <section>
+            <h3>Personal Details</h3>
+            <div class="input-group">
+              <label for="name">Full Name:</label>
+              <input type="text" id="name" required />
+            </div>
+
+            <div class="input-group">
+              <label for="nationality">Nationality:</label>
+              <input type="text" id="nationality" required />
+            </div>
+
+            <div class="input-group">
+              <label for="age">Age:</label>
+              <input type="number" id="age" required />
+            </div>
+
+            <div class="input-group">
+              <label for="contact">Contact Number:</label>
+              <input type="tel" id="contact" required />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" required />
+            </div>
+
+            <div class="input-group">
+              <label for="start-date">Preferred Start Date:</label>
+              <input type="date" id="start-date" required />
+            </div>
+
+            <div class="input-group">
+              <label for="gender">Gender:</label>
+              <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </section>
+
+          <section>
+            <h3>Select Plan</h3>
+            <div class="input-group">
+              <label for="plan">Choose Plan:</label>
+              <select id="plan" required>
+                <option value="">Select a Plan</option>
+                <option value="basic">Basic Plan - $220</option>
+                <option value="premium">Premium Plan - $850</option>
+                <option value="pro">Pro Plan - $1650</option>
+                <option value="custom">Custom Plan</option>
+              </select>
+            </div>
+          </section>
+
+          <div id="custom-details" class="custom-details" style="display: none">
+            <h3>Custom Plan Details</h3>
+            <div class="input-group">
+              <label for="hours">How many hours?</label>
+              <input type="number" id="hours" min="1" />
+            </div>
+
+            <div class="input-group">
+              <label for="native">Native Speaker?</label>
+              <input type="checkbox" id="native" />
+            </div>
+          </div>
+
+          <button type="submit">Generate Invoice</button>
+        </form>
+
+        <div
+          id="invoice-container"
+          class="invoice-container"
+          style="display: none"
+        >
+          <h3>Invoice Preview</h3>
+          <div id="invoice" class="invoice-preview"></div>
+          <button id="download-pdf">Download PDF</button>
+          <button id="paymentButton">Settle Payment</button>
+
+          <!-- Payment Modal -->
+          <div id="paymentModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Choose Payment Method</h2>
+
+              <!-- PayPal Button (will display here) -->
+              <div id="paypal-button-container">
+                <button id="paypal-button" class="payment-button">
+                  <i class="fab fa-cc-paypal"></i> Pay with PayPal
+                </button>
+              </div>
+
+              <!-- Line Pay Button -->
+              <div id="linepay-button-container">
+                <button id="linepay-button" class="payment-button">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LINE_Pay_logo_2018.svg/1200px-LINE_Pay_logo_2018.svg.png"
+                    alt="Line Pay"
+                    style="width: 24px; height: 24px; margin-right: 10px"
+                  />
+                  Pay with Line Pay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2024 BrightTALK ESL Classes</p>
+    </footer>
+
+    <script>
+      // Show or hide custom plan details based on selected plan
+      document.getElementById("plan").addEventListener("change", function () {
+        const customDetails = document.getElementById("custom-details");
+        if (this.value === "custom") {
+          customDetails.style.display = "block";
+        } else {
+          customDetails.style.display = "none";
+        }
+      });
+
+      // Handle form submission
+      document
+        .getElementById("invoice-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const nationality = document.getElementById("nationality").value;
+          const age = document.getElementById("age").value;
+          const contact = document.getElementById("contact").value;
+          const email = document.getElementById("email").value;
+          const gender = document.getElementById("gender").value;
+          const startDate = document.getElementById("start-date").value;
+          const plan = document.getElementById("plan").value;
+          const hours = document.getElementById("hours").value;
+          const native = document.getElementById("native").checked;
+
+          let planDetails = "";
+          let price = 0;
+
+          if (plan === "basic") {
+            planDetails = "Basic Plan - $220";
+            price = 220;
+          } else if (plan === "premium") {
+            planDetails = "Premium Plan - $850";
+            price = 850;
+          } else if (plan === "pro") {
+            planDetails = "Pro Plan - $1650";
+            price = 1650;
+          } else if (plan === "custom") {
+            planDetails = `Custom Plan - $${hours * (native ? 30 : 20)}`;
+            price = hours * (native ? 30 : 20);
+          }
+
+          const invoiceHtml = `
+                <div class="invoice-header">
+                    <div class="company-details">
+                        <strong>BrightTALK ESL Classes</strong><br />
+                        123 Language St, Suite 101<br />
+                        New York, NY 10001<br />
+                        Email: support@brighttalk.com
+                    </div>
+                    <div class="customer-details">
+                        <strong>Invoice To:</strong><br />
+                        ${name}<br />
+                        ${email}<br />
+                        ${contact}<br />
+                        Gender: ${gender}<br />
+                        Preferred Start Date: ${startDate}
+                    </div>
+                </div>
+                <h4>Invoice #${Math.floor(Math.random() * 10000)}</h4>
+                <p>Date: ${new Date().toLocaleDateString()}</p>
+                <div class="invoice-details">
+                    <p><strong>Plan:</strong> ${planDetails}</p>
+                    <p><strong>Total Price:</strong> $${price}</p>
+                </div>
+                <p><strong>Terms and Conditions:</strong></p>
+                <p>Payment is due within 30 days of receiving the invoice. For any questions or concerns, please contact support@brighttalk.com.</p>
+            `;
+
+          document.getElementById("invoice").innerHTML = invoiceHtml;
+          document.getElementById("invoice-container").style.display = "block";
+        });
+
+      // Generate and download PDF
+      document
+        .getElementById("download-pdf")
+        .addEventListener("click", function () {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          // Company Info Section
+          doc.setFontSize(16);
+          doc.text("BrightTALK ESL Academy", 10, 20);
+          doc.setFontSize(10);
+          doc.text("123 Language St, Suite 101", 10, 25);
+          doc.text("New York, NY 10001", 10, 30);
+          doc.text("Email: support@brighttalk.com", 10, 35);
+
+          // Draw a line for separation
+          doc.line(10, 40, 200, 40);
+
+          // Customer Info Section
+          doc.setFontSize(12);
+          doc.text("Invoice To:", 10, 45);
+          doc.setFontSize(10);
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const contact = document.getElementById("contact").value;
+          const gender = document.getElementById("gender").value;
+          const startDate = document.getElementById("start-date").value;
+
+          doc.text(name, 10, 50);
+          doc.text(email, 10, 55);
+          doc.text(contact, 10, 60);
+          doc.text(gender, 10, 65);
+          doc.text(startDate, 10, 70);
+
+          // Invoice Number & Date Section
+          doc.setFontSize(12);
+          doc.text("Invoice #" + Math.floor(Math.random() * 10000), 140, 45);
+          doc.text("Date: " + new Date().toLocaleDateString(), 140, 50);
+
+          // Plan and Price Details
+          doc.setFontSize(12);
+          const planDetails = document.getElementById("plan").value;
+          const hours = document.getElementById("hours").value;
+          const native = document.getElementById("native").checked;
+          let planText = "";
+          let price = 0;
+
+          if (planDetails === "basic") {
+            planText = "Basic Plan - $220";
+            price = 220;
+          } else if (planDetails === "premium") {
+            planText = "Premium Plan - $850";
+            price = 850;
+          } else if (planDetails === "pro") {
+            planText = "Pro Plan - $1650";
+            price = 1650;
+          } else if (planDetails === "custom") {
+            planText = `Custom Plan - $${hours * (native ? 30 : 20)}`;
+            price = hours * (native ? 30 : 20);
+          }
+
+          doc.text("Plan: " + planText, 10, 80);
+          doc.text("Total Price: $" + price, 10, 90);
+
+          // Terms and Conditions Section
+          doc.setFontSize(12);
+          doc.text("Terms and Conditions:", 10, 100);
+          doc.setFontSize(10);
+          const terms =
+            "Payment is due within 30 days of receiving the invoice. For any questions or concerns, please contact support@brighttalk.com.";
+          doc.text(terms, 10, 105, { maxWidth: 180 });
+
+          // Save the PDF
+          doc.save("BrightTALK ESL invoice.pdf");
+        });
+
+      // Get the modal, button, and close elements
+      const modal = document.getElementById("paymentModal");
+      const btn = document.getElementById("paymentButton");
+      const span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

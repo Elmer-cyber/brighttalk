@@ -1,0 +1,891 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fb; /* Softer background color */
+  color: #444; /* Slightly darker text for better readability */
+  line-height: 1.6;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  margin: 20px 0;
+  color: #1f2a44; /* Darker shade of blue for headers */
+}
+p {
+  font-weight: 400;
+  color: #666; /* Lighter text color for paragraphs */
+}
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px; /* Slightly smaller padding */
+  background-color: #0077cc; /* Softer blue color */
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+  background-color: #00aaff; /* Darker blue for hover */
+}
+
+/* Header Section */
+/* New sticky header */
+.sticky-header {
+  background: linear-gradient(
+    to right,
+    #d78a04,
+    #d78a04
+  ); /* Lighter gradient colors */
+  color: white;
+  padding: 3px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it’s on top */
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better visibility */
+}
+
+.sticky-header a {
+  color: white;
+  text-decoration: underline;
+}
+
+.sticky-header a:hover {
+  color: #333;
+}
+
+/* Ensure the body doesn’t overlap the sticky header */
+body {
+  margin-top: 60px; /* Adjust according to the height of the header */
+}
+
+/* Make sure the container inside the sticky header is wide enough */
+.sticky-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .sticky-header {
+    font-size: 14px; /* Smaller font for mobile */
+    padding: 5px 0; /* Adjust padding for smaller screens */
+  }
+
+  .sticky-header .container {
+    padding: 0 10px; /* Less padding for smaller screens */
+  }
+
+  .sticky-header a {
+    font-size: 12px; /* Smaller text for links */
+  }
+}
+
+/* Extra Mobile View Adjustments for Very Small Screens */
+@media (max-width: 480px) {
+  .sticky-header {
+    font-size: 12px; /* Even smaller font size */
+    padding: 4px 0; /* Reduce padding for very small screens */
+  }
+
+  .sticky-header a {
+    font-size: 10px; /* Even smaller links */
+  }
+
+  body {
+    margin-top: 50px; /* Adjust margin for very small screens */
+  }
+}
+
+header {
+  background-color: #ffed86; /* Darker and more professional tone */
+  color: rgb(0, 0, 0) !important;
+  padding: 5px 20px; /* Adjusted padding for cleaner look */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px; /* Adjusted height for a balanced header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds subtle shadow for depth */
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Optional: Add max width for better layout */
+  margin: 0 auto; /* Center the container */
+}
+header h1 {
+  font-size: 24px; /* Adjusted font size for header */
+  margin: 0;
+  color: #000000;
+}
+header nav {
+  font-size: 16px; /* Reduced font size */
+}
+header nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+  padding: 5px 0; /* Added some padding for better alignment */
+}
+header nav a:hover {
+  color: #00aaff; /* Softer hover color */
+}
+header .cta-button {
+  display: none; /* Hide the button if not needed */
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 70px 0 50px; /* Adjusted padding */
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  margin-top: 70px;
+}
+.why-choose-us .section-title {
+  font-size: 26px; /* Slightly smaller font size */
+  color: #0a3d40; /* Softer shade of teal */
+  margin-bottom: 20px;
+}
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Reduced gap for a tighter layout */
+  flex-wrap: wrap;
+}
+.card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px; /* Slightly smaller padding */
+  width: 260px; /* Reduced width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer hover shadow */
+}
+.card h3 {
+  font-size: 18px; /* Smaller heading font size */
+  margin-bottom: 15px;
+  color: #0077cc; /* Softer blue color */
+}
+.card ul {
+  text-align: left;
+  padding-left: 20px;
+  color: #555;
+}
+.card ul li {
+  margin-bottom: 8px; /* Reduced spacing */
+  font-size: 13px; /* Slightly smaller font size */
+}
+
+/* Plan Section */
+.plan-section {
+  padding: 45px 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+.plan-section .section-title {
+  font-size: 26px; /* Slightly smaller font size */
+  margin-bottom: 20px;
+}
+.plans-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Reduced gap */
+  flex-wrap: wrap;
+}
+.plan-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 25px; /* Slightly reduced padding */
+  width: 260px; /* Smaller width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer hover effect */
+}
+.plan-card h3 {
+  font-size: 22px; /* Smaller heading size */
+  color: #00aaff;
+  margin-bottom: 15px;
+}
+.plan-card p {
+  font-size: 15px; /* Reduced font size */
+  color: #555;
+  margin-bottom: 15px;
+}
+.plan-card .price {
+  font-size: 16px; /* Reduced font size */
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+.plan-card .cta-button {
+  background-color: #0077cc;
+  color: white;
+}
+
+/* Programs Section */
+.programs {
+  padding: 45px 0;
+  background-color: #f7f9fb; /* Softer background */
+  text-align: center;
+}
+.programs .section-title {
+  font-size: 26px; /* Slightly smaller font size */
+  margin-bottom: 20px;
+}
+.programs .cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.programs .card {
+  background-color: #ffffff;
+  padding: 20px; /* Slightly smaller padding */
+  width: 260px; /* Smaller width */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.programs .card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow effect */
+}
+.programs .card h3 {
+  font-size: 18px; /* Reduced heading size */
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+/* Webex Section */
+.webex-section {
+  padding: 45px 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+.webex-section .section-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.webex-section p {
+  font-size: 14px; /* Smaller font size */
+  color: #555;
+  margin-bottom: 20px;
+}
+.webex-section a {
+  color: #00aaff;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.webex-section a:hover {
+  color: #00aaff;
+  text-decoration: underline;
+}
+
+/* Payment Section */
+.payment-options {
+  padding: 45px 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+.payment-options .payment-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Reduced gap */
+  flex-wrap: wrap;
+}
+.payment-options .payment-card {
+  background-color: #f8f9fa;
+  padding: 15px; /* Smaller padding */
+  border-radius: 8px;
+  width: 230px; /* Smaller width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.payment-options .payment-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow effect */
+}
+.payment-options h3 {
+  font-size: 22px; /* Slightly smaller font size */
+  margin-bottom: 30px;
+  color: #1f2a44;
+}
+.payment-options .payment-card h4 {
+  font-size: 18px; /* Smaller heading size */
+  color: #00aaff;
+  margin-bottom: 15px;
+}
+
+/* Style for links with btn-link class */
+.btn-link {
+  color: #00aaff;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #00aaff; /* Darker blue on hover */
+}
+
+.btn-link i {
+  margin-left: 5px; /* Adjust icon position if needed */
+}
+
+/* Contact Section */
+.contact {
+  padding: 45px 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact input,
+.contact textarea {
+  width: 280px; /* Slightly narrower input */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size */
+  transition: border-color 0.3s ease;
+}
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #0077cc;
+}
+.contact button {
+  padding: 10px 20px; /* Smaller button size */
+  background-color: #0077cc;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact button:hover {
+  background-color: #00aaff;
+}
+
+/* Footer Section */
+footer {
+  padding: 15px 0; /* Reduced padding */
+  text-align: center;
+  background-color: #9b9b9b;
+  color: rgb(255, 255, 255);
+}
+footer p {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #00aaff;
+}
+
+/* Plan Details Section */
+#plan-details {
+  background-color: #fff;
+  padding: 40px 0;
+  margin-top: -50px;
+}
+
+/* Plan Details h3 */
+#plan-details h3 {
+  color: #00b3b3; /* Teal color for the heading */
+  font-size: 2rem; /* Larger font size for visibility */
+  font-weight: 700; /* Bold font weight */
+  margin-bottom: 15px; /* Spacing below the heading */
+  text-align: left; /* Center the heading */
+  letter-spacing: 1px; /* Slightly increase spacing between letters */
+  text-transform: uppercase; /* Transform text to uppercase */
+}
+
+#plan-details p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+#plan-details .price {
+  font-size: 1.8rem;
+  color: #e74c3c;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#plan-details ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+#plan-details ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+#plan-details ul li strong {
+  color: #333;
+}
+
+/* Call to Action Button */
+.cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #00b3b3;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header nav a {
+    margin: 0 10px;
+    font-size: 1rem;
+  }
+
+  #plan-details h2,
+  #plan-details h3 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+/*invoice*/
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form section {
+  margin-bottom: 5px;
+}
+
+.input-group {
+  margin-bottom: 5px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: 140%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: -10px;
+}
+
+button {
+  padding: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.invoice-container {
+  margin-top: 30px;
+  display: none;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#invoice h4 {
+  font-size: 24px;
+  color: #333;
+}
+
+#invoice p {
+  font-size: 18px;
+  line-height: 1.2;
+  color: #555;
+}
+
+#download-pdf {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#download-pdf:hover {
+  background-color: #0b7dda;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 15px;
+  margin-top: 50px;
+}
+.invoice-header h3 {
+  margin: 0;
+  color: #007bff;
+}
+.company-details {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+.customer-details {
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+.input-group {
+  margin-bottom: 15px;
+}
+input,
+select,
+button {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+  font-size: 16px;
+}
+select {
+  cursor: pointer;
+}
+button {
+  background-color: #ececec;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #ececec;
+}
+.invoice-container {
+  display: none;
+  margin-top: 40px;
+}
+.invoice-preview {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.invoice-preview h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.invoice-details {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.invoice-details p {
+  margin: 5px 0;
+}
+
+/* General Button Styles */
+button {
+  background-color: #ececec; /* Light background */
+  color: #333; /* Dark text */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  padding: 10px 20px; /* Adjusted vertical and horizontal padding for a shorter button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
+  width: auto; /* Let the button's width adjust to the content */
+  min-width: 100px; /* Set a minimum width to prevent it from being too small */
+}
+
+/* Hover Effects */
+button:hover {
+  background-color: #dbdddb; /* Darker background on hover */
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050; /* Increased for better layering */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background */
+  padding-top: 100px; /* Adjusted for better spacing */
+  transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  width: 90%;
+  max-width: 500px; /* Increased max width */
+  transition: transform 0.3s ease-in-out;
+  border: none;
+}
+
+/* Close Button */
+.close {
+  color: #888;
+  font-size: 32px; /* Larger for better readability */
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.close:hover,
+.close:focus {
+  color: #333; /* Darker on hover for better contrast */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Form Inputs */
+form input {
+  width: 100%;
+  padding: 12px 16px; /* Increased padding for better input area */
+  margin-bottom: 20px; /* Increased bottom margin */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Slightly rounded borders */
+  font-size: 16px; /* Larger font for readability */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus {
+  border-color: #4caf50; /* Green border when focused */
+  outline: none;
+}
+
+/* Form Submit Button */
+form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 24px; /* Increased padding for a larger button */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px; /* Larger font size */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Modal Fade-in Effect */
+.modal.fade-in {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.modal.fade-in.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay Animation */
+.modal.show {
+  display: block;
+}
+
+.payment-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #00c300; /* Line Pay's green color */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+  background-color: #00a800; /* Darker shade of green for hover effect */
+}
+
+.payment-button:focus {
+  outline: none;
+}
+
+.payment-button img {
+  width: 24px; /* Ensure the logo is the right size */
+  height: 24px;
+  margin-right: 10px;
+}
+
+.teachers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: -40px !important;
+}
+
+.teacher-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #ffed8698;
+  height: auto; /* Automatically adjusts based on content */
+}
+
+.teacher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.teacher-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top center; /* Focuses on the top center of the image */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.teacher-card h3 {
+  margin: 15px 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #333;
+}
+.nationality {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+  font-family: Arial, sans-serif;
+  margin-top: -15px;
+}
+
+.teacher-card p {
+  padding: 0 15px 15px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: -15px;
+}
+
+.teacher-card .bio {
+  font-style: italic;
+  color: #777;
+}
+
+.teacher-card .social-links {
+  margin-top: 15px;
+}
+
+.teacher-card .social-links a {
+  margin: 0 8px;
+  font-size: 16px;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.teacher-card .social-links a:hover {
+  color: #007bff;
+}
+
+.teachers-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
